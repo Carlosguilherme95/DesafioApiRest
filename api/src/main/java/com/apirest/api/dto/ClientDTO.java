@@ -1,15 +1,25 @@
 package com.apirest.api.dto;
 
 import com.apirest.api.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+
+    @NotBlank(message = "Campo requerido")
     private String name;
+
     private String cpf;
+
     private Double income;
+
+    @PastOrPresent(message = "não é permitido data de nascimento futura")
     private LocalDate birthDate;
+
     private Integer children;
 
     public ClientDTO() {}
